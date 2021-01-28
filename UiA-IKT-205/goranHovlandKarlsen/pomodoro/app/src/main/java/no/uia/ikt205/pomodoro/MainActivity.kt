@@ -15,7 +15,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var startButton:Button
     lateinit var coutdownDisplay:TextView
 
-    val timeToCountDownInMs = 5000L
+    lateinit var timer30:Button
+    lateinit var timer60:Button
+    lateinit var timer90:Button
+    lateinit var timer120:Button
+    var currentlyRunning:Boolean = false
+
+    var timeToCountDownInMs = 0L
     val timeTicks = 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +34,30 @@ class MainActivity : AppCompatActivity() {
        }
        coutdownDisplay = findViewById<TextView>(R.id.countDownView)
 
+        timer30 = findViewById(R.id.timer30)
+        timer30.setOnClickListener(){
+            timeToCountDownInMs = 1800000L
+            updateCountDownDisplay(timeToCountDownInMs)
+        }
+
+        timer60 = findViewById(R.id.timer60)
+        timer60.setOnClickListener(){
+            timeToCountDownInMs = 3600000L
+            updateCountDownDisplay(timeToCountDownInMs)
+        }
+
+        timer90 = findViewById(R.id.timer90)
+        timer90.setOnClickListener(){
+            timeToCountDownInMs = 5400000L
+            updateCountDownDisplay(timeToCountDownInMs)
+        }
+
+        timer120 = findViewById(R.id.timer120)
+        timer120.setOnClickListener(){
+            timeToCountDownInMs = 7200000L
+            updateCountDownDisplay(timeToCountDownInMs)
+        }
+        
     }
 
     fun startCountDown(v: View){
