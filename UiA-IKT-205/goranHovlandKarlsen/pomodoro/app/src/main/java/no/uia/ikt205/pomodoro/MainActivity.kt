@@ -31,37 +31,44 @@ class MainActivity : AppCompatActivity() {
        startButton = findViewById<Button>(R.id.startCountdownButton)
        startButton.setOnClickListener(){
            startCountDown(it)
+           currentlyRunning = true
        }
        coutdownDisplay = findViewById<TextView>(R.id.countDownView)
 
         timer30 = findViewById(R.id.timer30)
         timer30.setOnClickListener(){
-            timeToCountDownInMs = 1800000L
-            updateCountDownDisplay(timeToCountDownInMs)
+            if (!currentlyRunning) {
+                timeToCountDownInMs = 1800000L
+                updateCountDownDisplay(timeToCountDownInMs)
+            }
         }
 
         timer60 = findViewById(R.id.timer60)
         timer60.setOnClickListener(){
-            timeToCountDownInMs = 3600000L
-            updateCountDownDisplay(timeToCountDownInMs)
+            if (!currentlyRunning) {
+                timeToCountDownInMs = 3600000L
+                updateCountDownDisplay(timeToCountDownInMs)
+            }
         }
 
         timer90 = findViewById(R.id.timer90)
         timer90.setOnClickListener(){
-            timeToCountDownInMs = 5400000L
-            updateCountDownDisplay(timeToCountDownInMs)
+            if (!currentlyRunning) {
+                timeToCountDownInMs = 5400000L
+                updateCountDownDisplay(timeToCountDownInMs)
+            }
         }
 
         timer120 = findViewById(R.id.timer120)
-        timer120.setOnClickListener(){
-            timeToCountDownInMs = 7200000L
-            updateCountDownDisplay(timeToCountDownInMs)
+        timer120.setOnClickListener() {
+            if (!currentlyRunning) {
+                timeToCountDownInMs = 7200000L
+                updateCountDownDisplay(timeToCountDownInMs)
+            }
         }
-        
     }
 
     fun startCountDown(v: View){
-
         timer = object : CountDownTimer(timeToCountDownInMs,timeTicks) {
             override fun onFinish() {
                 Toast.makeText(this@MainActivity,"Arbeidsøkt er ferdig", Toast.LENGTH_SHORT).show()
