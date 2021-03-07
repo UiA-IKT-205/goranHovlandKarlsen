@@ -46,7 +46,7 @@ class KeyPair : Fragment() {
         }
         ft.add(view.KeyPair.id, fullToneKey, "note_$fullNote")
 
-        
+
         val halfToneKey = HalfTonePianoKeyFragment.newInstance(halfNote)
 
         halfToneKey.onKeyDown = {
