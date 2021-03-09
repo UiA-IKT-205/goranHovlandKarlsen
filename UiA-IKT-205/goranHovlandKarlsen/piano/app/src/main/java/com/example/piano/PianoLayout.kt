@@ -2,11 +2,13 @@ package com.example.piano
 
 import android.R.attr.data
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.example.piano.data.Note
 import com.example.piano.databinding.FragmentPianoBinding
@@ -17,6 +19,8 @@ import java.io.OutputStreamWriter
 
 
 class PianoLayout : Fragment() {
+
+    var onSave:((file:Uri) -> Unit)? = null
 
     private var _binding:FragmentPianoBinding? = null
     private val binding get() = _binding!!
@@ -83,40 +87,36 @@ class PianoLayout : Fragment() {
 
         ft.commit()
 
-
-        view.saveScore.setOnClickListener {
-            var fileName = view.saveLocation.text.toString()
-            // fileName = "Testfile"
-            val path = this.activity?.getExternalFilesDir(null)
-
-            if (fileName.isNotEmpty() && score.count() > 0) {
-                fileName = "$fileName.musikk"
-                val saveFile = File(path, fileName)
-
-                if (saveFile.exists()) {
-                    print("error message")
+        view.saveFileButton.setOnClickListener {
+            //var fileName = view.fileNameTextEdit.text.toString()
+            var fileName = "FirstMelody"
+            if (score.count() > 0 && fileName.isNotEmpty()){
+                fileName = "$fileName.mp3"
+                val content:String = score.map {
+                    it.toString()
+                }.reduce { acc, s -> acc + s + "\n"}
+                    saveFile(fileName, content)
                 }
-                else {
-                FileOutputStream(File(path, fileName), true).bufferedWriter().use {
-                    // bufferedWriter lever kun her
-                    score.forEach {
-                        val writer = OutputStreamWriter(
-                            context!!.openFileOutput("$fileName.musikk", Context.MODE_PRIVATE)
-                        )
-                        writer.write("${it.toString()}\n")
-                        writer.close()
-                        }
-                    }
-                }
-            }
-
             else {
-                print("File needs a name and notes")
-                // TODO @ Make a Toast.makeText instead of print
-                // Toast.makeText(this@PianoLayout,"Filen trenger noter og/eller navn", Toast.LENGTH_SHORT).show()
+                print("todo, fix later")
             }
         }
 
         return view
+    }
+
+    private fun saveFile(filename:String, content:String){
+        val path = this.activity?.getExternalFilesDir(null)
+        if (path != null){
+            val file = File(path, filename)
+            FileOutputStream(file, true).bufferedWriter().use { writer ->
+                writer.write(content)
+            }
+
+            this.onSave?.invoke(file.toUri())
+        }
+        else{
+            print("Todo")
+        }
     }
 }
