@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var timer60:Button
     lateinit var timer90:Button
     lateinit var timer120:Button
-    private lateinit var stopButton:Button
+    lateinit var stopButton:Button
     var currentlyRunning:Boolean = false
 
     var timeToCountDownInMs = 0L
@@ -74,25 +74,24 @@ class MainActivity : AppCompatActivity() {
         })
 
         val repetitions = findViewById<EditText>(R.id.editRepetitions).text.toString().toIntOrNull()
-        if (repetitions != null){
-            for (x in 1..repetitions){
-                timeToCountDownInMs = seek.progress.toLong()
-                updateCountDownDisplay(timeToCountDownInMs)
-                if (timeToCountDownInMs == 0L){
-                    Toast.makeText(this@MainActivity,"Arbeidsøkt ferdig", Toast.LENGTH_SHORT).show()
-                }
-
-                timeToCountDownInMs = pause_seek.progress.toLong()
-                updateCountDownDisplay(timeToCountDownInMs)
-                if (timeToCountDownInMs == 0L){
-                    Toast.makeText(this@MainActivity,"Pause ferdig", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
 
         startButton = findViewById<Button>(R.id.startCountdownButton)
        startButton.setOnClickListener(){
+           if (repetitions != null){
+               for (x in 1..repetitions){
+                   timeToCountDownInMs = seek.progress.toLong()
+                   updateCountDownDisplay(timeToCountDownInMs)
+                   if (timeToCountDownInMs == 0L){
+                       Toast.makeText(this@MainActivity,"Arbeidsøkt ferdig", Toast.LENGTH_SHORT).show()
+                   }
+
+                   timeToCountDownInMs = pause_seek.progress.toLong()
+                   updateCountDownDisplay(timeToCountDownInMs)
+                   if (timeToCountDownInMs == 0L){
+                       Toast.makeText(this@MainActivity,"Pause ferdig", Toast.LENGTH_SHORT).show()
+                   }
+               }
+           }
            if (!currentlyRunning) {
                startCountDown(it)
                currentlyRunning = true
