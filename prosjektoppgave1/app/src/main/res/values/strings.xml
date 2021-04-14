@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">prosjektoppgave1</string>
+    <string name="add_list_text">Add list</string>
+    <string name="delete_current_list">Delete list</string>
+    <string name="Add_element_btn">Add item</string>
+    <string name="mainScreenListName">Superlister</string>
+    <string name="mainScreenSlogan">Gjør livet enklere</string>
+    <string name="StaticHeaderBlack">Static Header</string>
+    <string name="delete_this_list">Delete this list</string>
+</resources>
