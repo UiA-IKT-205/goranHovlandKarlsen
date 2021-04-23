@@ -1,0 +1,4 @@
+com/example/prosjektoppgave2/databinding/ActivityMainBinding.java
+ com.example.prosjektoppgave2.databinding.ActivityMainBinding
+com/example/prosjektoppgave2/BuildConfig.java
+ com.example.prosjektoppgave2.BuildConfig
