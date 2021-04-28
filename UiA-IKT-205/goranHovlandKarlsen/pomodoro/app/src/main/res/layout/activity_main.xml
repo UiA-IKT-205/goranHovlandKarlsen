@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_time_display"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,27 +21,29 @@
         android:id="@+id/timer30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="30"
         app:layout_constraintEnd_toStartOf="@+id/timer60"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintTop_toBottomOf="@+id/countDownView" />
 
     <Button
         android:id="@+id/timer60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="64dp"
         android:text="60"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintTop_toBottomOf="@+id/countDownView" />
 
     <Button
         android:id="@+id/timer90"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="24dp"
         android:text="90"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer30" />
@@ -49,10 +52,10 @@
         android:id="@+id/timer120"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="120"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toEndOf="@+id/timer90"
         app:layout_constraintTop_toBottomOf="@+id/timer60" />
 
@@ -60,11 +63,87 @@
         android:id="@+id/startCountdownButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="96dp"
         android:text="START"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar_15_300"
+        android:layout_width="242dp"
+        android:layout_height="59dp"
+        android:max="300"
+        android:min="15"
+        android:progress="15"
+        android:scrollbarSize="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/countDownView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <Button
+        android:id="@+id/stopCountdownButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startCountdownButton" />
+
+    <TextView
+        android:id="@+id/seekbar_textview"
+        android:layout_width="106dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:text="15"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_15_300"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/pause_seekBar"
+        android:layout_width="242dp"
+        android:layout_height="56dp"
+        android:max="30"
+        app:layout_constraintBottom_toTopOf="@+id/countDownView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_15_300"
+        app:layout_constraintVertical_bias="0.322" />
+
+    <TextView
+        android:id="@+id/pause_textview"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/pause_seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editRepetitions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:hint="@string/repetitions"
+        app:layout_constraintBottom_toTopOf="@+id/countDownView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pause_seekBar"
+        android:autofillHints="" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
