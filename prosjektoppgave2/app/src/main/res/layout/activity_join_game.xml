@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinGame">
+
+    <EditText
+        android:id="@+id/joinGamePlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/joinGameGameID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Game ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/joinGamePlayerName"
+        app:layout_constraintBottom_toTopOf="@id/joinGameBtn2"/>
+
+    <Button
+        android:id="@+id/joinGameBtn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/join_game"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/joinGameGameID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/joinGameBackBtn"/>
+
+    <Button
+        android:id="@+id/joinGameBackBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/joinGameBtn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
